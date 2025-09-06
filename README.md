@@ -1,4 +1,3 @@
-# Capacitors
 // ESP32 Capacitor Discharge Timer - Enhanced
 const int capPin = 32;     // Analog pin connected to capacitor
 const int buttonPin = 25;  // Digital pin connected to the button
@@ -44,16 +43,6 @@ void loop() {
   if (timing && capValue < dischargeThreshold) {
     dischargeTime = micros() - startTime; // Calculate elapsed time
     timing = false; // Stop timing
-
-    // Print the results
-    Serial.print("Discharge time: ");
-    Serial.print(dischargeTime / 1000.0); // Convert microseconds to milliseconds
-    Serial.print(" ms | Final Voltage: ");
-    Serial.print(capVoltage, 2);
-    Serial.println(" V");
-    Serial.println("Press button again for a new measurement.");
   }
-
-  // A small delay for stability
   delay(10);
 }
